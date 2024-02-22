@@ -11,10 +11,10 @@ automatic_scaling:
 
 # Environment variables
 env_variables:
-  KEY="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"
-  WHATSAPP_TOKEN="EAAPgO73ZCNh8BOxw3ZC3AIr8R5gJKF79hHankv6OU4VI0hVUONmvOzCfblMcr96pEBS3fk2W8DbQNJzNJkc7EBL8bRkKthCXW4ojBUPj5iSKbzdgZBmZABqPG99I1jxBYtDexkaBBeD5D9Kry9QwNoU0sUV66NVEOknQA7eLvj6a8bhZA6gg5IiBlSwZB1hMKtmPII2HSJFMCkMUV54LSaYwdINfUZD"
-  WEAVIATE_API_KEY="37ESFfEpfIn6Csis9by0Cdq9WQl91AEP9kpY"
-  WEAVIATE_URL="https://murrkfdqk2cac91dqye6w.c0.us-west1.gcp.weaviate.cloud"
+  KEY:"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"
+  WHATSAPP_TOKEN:"EAAPgO73ZCNh8BOxw3ZC3AIr8R5gJKF79hHankv6OU4VI0hVUONmvOzCfblMcr96pEBS3fk2W8DbQNJzNJkc7EBL8bRkKthCXW4ojBUPj5iSKbzdgZBmZABqPG99I1jxBYtDexkaBBeD5D9Kry9QwNoU0sUV66NVEOknQA7eLvj6a8bhZA6gg5IiBlSwZB1hMKtmPII2HSJFMCkMUV54LSaYwdINfUZD"
+  WEAVIATE_API_KEY:"37ESFfEpfIn6Csis9by0Cdq9WQl91AEP9kpY"
+  WEAVIATE_URL:"https://murrkfdqk2cac91dqye6w.c0.us-west1.gcp.weaviate.cloud"
 
 # Handlers define how to respond to HTTP requests
 handlers:
