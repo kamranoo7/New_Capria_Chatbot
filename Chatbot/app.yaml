@@ -1,0 +1,22 @@
+runtime: python39  # Use the Python runtime environment, specify Python version
+env: standard      # Use the standard environment
+instance_class: F1 # Choose an instance class based on your needs, F1 is the smallest
+
+# Automatic scaling configuration
+automatic_scaling:
+  min_idle_instances: 0  # Minimum number of idle instances
+  max_idle_instances: automatic  # Maximum number of idle instances, 'automatic' for App Engine to decide
+  min_pending_latency: automatic  # Minimum time a request waits in the queue before being served, 'automatic' for App Engine to decide
+  max_pending_latency: automatic  # Maximum time a request waits in the queue before being served, 'automatic' for App Engine to decide
+
+# Environment variables
+env_variables:
+  KEY="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"
+  WHATSAPP_TOKEN="EAAPgO73ZCNh8BOxw3ZC3AIr8R5gJKF79hHankv6OU4VI0hVUONmvOzCfblMcr96pEBS3fk2W8DbQNJzNJkc7EBL8bRkKthCXW4ojBUPj5iSKbzdgZBmZABqPG99I1jxBYtDexkaBBeD5D9Kry9QwNoU0sUV66NVEOknQA7eLvj6a8bhZA6gg5IiBlSwZB1hMKtmPII2HSJFMCkMUV54LSaYwdINfUZD"
+  WEAVIATE_API_KEY="37ESFfEpfIn6Csis9by0Cdq9WQl91AEP9kpY"
+  WEAVIATE_URL="https://murrkfdqk2cac91dqye6w.c0.us-west1.gcp.weaviate.cloud"
+
+# Handlers define how to respond to HTTP requests
+handlers:
+- url: /.*  # Catch-all handler to match all requests
+  script: auto  # Automatically route requests to the application

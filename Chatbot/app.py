@@ -58,7 +58,7 @@ def qdb(query, db_client, name, cname):
     try:
         limit = 5
         res = (
-            db_client.query.get(name, ["text", "metadata"])
+            db_client.query.get("Capria1", ["text", "metadata"])
             .with_near_text({"concepts": query})
             .with_limit(limit)
             .do()
@@ -87,7 +87,8 @@ def generate_chat_response(user_question, context):
     # Construct the system and user messages
     print("context222222222222",context)
     system_message = "Given below is a piece of text about Capria. You will be asked questions about it. Please do answer only using the information given below. take your time, and read it carefully and thoroughly. Do not miss anything. The information might be in a non-contiguous unstructured manner. Do not use our own information. Think carefully and provide detailed and long answers. The person asking the question does not know about the context, please answer directly. I am retrieving the below chunks from a vector DB. Before each chunk, I am providing the modification date. Whenever you are confused, pick the information from the chunk which contains the more recent modification date. There will be a lot of conflicting information. Use the modification date to pick recent information. The current date is: October 28th, 2023. If you are unable to generate a response from the context, return 'Unanswerable question':   \n" + context
-    user_message = f"Question: {user_question} Additional context and instructions for the LLM"
+    user_message = "Question: " + user_question + \
+            " provide in-text citations at the end of each sentence. Do Not bunch multiple citations in one bracket. USe separate brackets for each digit." + "\n\n" + context
     # print("context222222222222",context)
     # Prepare the messages payload for the LLM
     msg = [
@@ -102,7 +103,7 @@ def generate_chat_response(user_question, context):
     def call_api():
           # Assuming lm_client is the OpenAI client initialized globally
         response = lm_client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-3.5-turbo",
             messages=msg,
             max_tokens=1000,
             temperature=0.0
@@ -161,9 +162,9 @@ def webhook():
 
 
 def send_whatsapp_message(to, message):
-    url = "https://graph.facebook.com/v18.0/233232389874980/messages"
+    url = "https://graph.facebook.com/v18.0/242718832258483/messages "
     headers = {
-        'Authorization': 'Bearer EAAQCw46knDUBOzfRlkNgxZCcxDha5QokBu0nS767tjKzymQ51m8X6ZA7u11ZAHFvna53RYewZAfqRhObiupNAKMdRWqXuTTjXOtosxiUfEDrLjZCZA063oUqYZAGcoMtMFN2i8m74ZBP602DfZCN3akq0IdvuGqirMFi5m77qcY9A8qMZBBCT4ZCmZB0uNh4HaPi3Ofu1kPkEbexsgXNFriOupQZD',
+        'Authorization': 'Bearer EAAQCw46knDUBO77RhIcThmbClqin0IwsnZB3nXfiZC7aNYLFlZBDIX33n6rzJZB1RDKjH2RA3Kp8j7fSJC26HskqBNVBJouTgs8UN2WNmusj8njuDnOZCBZA8U3TSddPn1lZCTVoSS84CbLrumzwRvd6ZC0bKdP4RM09LbdVsVswqDZBbij8tuuRycFYzbHq3e59bwGfx0B01AxZBAHZA7uQcwZD',
         'Content-Type': 'application/json'
     }
     data = {
@@ -181,4 +182,4 @@ def send_whatsapp_message(to, message):
         print("Failed to send message", response.text)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=8080)
